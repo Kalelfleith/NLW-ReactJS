@@ -1,4 +1,5 @@
 import { firebase, auth } from '../services/firebase';
+import { useContext } from 'react';
 
 // Webpach - Module Bundler
 import illustrationImg from '../assets/imgs/illustration.svg';
@@ -9,18 +10,20 @@ import { Button } from '../components/Button';
 
 import { useNavigate } from 'react-router-dom';
 
+import { TestContext } from '../App';
+
 export function Home() {
     const history = useNavigate();
+    const {value, setValue} = useContext(TestContext);
 
     function handleCreateRoom() {
 
         const provider = new firebase.auth.GoogleAuthProvider();
 
         auth.signInWithPopup(provider).then(result =>{
-            console.log(result);
+            history('/rooms/new');
         });
 
-        history('/rooms/new');
     }
     
     return (
@@ -32,6 +35,7 @@ export function Home() {
             </aside>
 
             <main>
+                <h1>{value}</h1>
                 <div className="main-content">
                     <img src={logoImg} alt="Letmeask" />
                     <button onClick={handleCreateRoom} className="create-room">
