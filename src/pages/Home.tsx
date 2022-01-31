@@ -7,7 +7,7 @@ import { Button } from '../components/Button';
 
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { AuthContext } from '../App';
+import { AuthContext } from '../contexts/AuthContext';
 
 export function Home() {
     const history = useNavigate();
