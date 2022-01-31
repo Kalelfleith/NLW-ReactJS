@@ -6,19 +6,16 @@ import '../styles/auth.scss'
 import { Button } from '../components/Button';
 
 import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../contexts/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 
 export function Home() {
     const history = useNavigate();
-
-    const { user, signInWithGoogle } = useContext(AuthContext)
+    const { user, signInWithGoogle } = useAuth();
 
     async function handleCreateRoom() {
         if (!user) {
             await signInWithGoogle();
         }
-
         history('/rooms/new');
     }
 
