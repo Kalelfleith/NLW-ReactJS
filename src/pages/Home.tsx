@@ -1,5 +1,3 @@
-import { firebase, auth } from '../services/firebase';
-
 // Webpach - Module Bundler
 import illustrationImg from '../assets/imgs/illustration.svg';
 import logoImg from '../assets/imgs/logo.svg';
