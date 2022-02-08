@@ -4,7 +4,6 @@ import illustrationImg from '../assets/imgs/illustration.svg';
 import logoImg from '../assets/imgs/logo.svg';
 
 import { Button } from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
 
 import '../styles/auth.scss'
 
