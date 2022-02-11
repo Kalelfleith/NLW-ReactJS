@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { FormEvent } from 'react'
+import { FormEvent, useState } from 'react'
 
 import illustrationImg from '../assets/imgs/illustration.svg';
 import logoImg from '../assets/imgs/logo.svg';
@@ -12,8 +12,12 @@ import '../styles/auth.scss'
 export function NewRoom() {
     //const { user } = useAuth();
 
+    const [newRoom, setNewRoom] = useState('');
+
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
+
+
     }
 
 
@@ -33,6 +37,8 @@ export function NewRoom() {
                         <input
                         type="text"
                         placeholder="Nome da sala"
+                        onChange={event => setNewRoom(event.target.value)}
+                        value={newRoom}
                         />
                         <Button type="submit">
                             Criar sala
