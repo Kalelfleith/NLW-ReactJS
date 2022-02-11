@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { FormEvent, useState } from 'react'
 
@@ -14,6 +14,7 @@ import { useAuth } from '../hooks/useAuth';
 export function NewRoom() {
     const { user } = useAuth();
     const [newRoom, setNewRoom] = useState('');
+    const history = useNavigate();
 
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
@@ -29,6 +30,8 @@ export function NewRoom() {
             title: newRoom,
             authorId: user?.id,           
         });
+
+        history(`/rooms/${firebaseRoom.key}`)
     }
 
 
