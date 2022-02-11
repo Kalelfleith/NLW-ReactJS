@@ -8,16 +8,27 @@ import logoImg from '../assets/imgs/logo.svg';
 import { Button } from '../components/Button';
 
 import '../styles/auth.scss'
+import { database } from '../services/firebase';
+import { useAuth } from '../hooks/useAuth';
 
 export function NewRoom() {
-    //const { user } = useAuth();
-
+    const { user } = useAuth();
     const [newRoom, setNewRoom] = useState('');
 
     async function handleCreateRoom(event: FormEvent) {
         event.preventDefault();
 
+        if (newRoom.trim() === '') {
+            return;
+        }
 
+        //databse row - example
+        const roomRef = database.ref('rooms');
+
+        const firebaseRoom = await roomRef.push({
+            title: newRoom,
+            authorId: user?.id,           
+        });
     }
 
 
